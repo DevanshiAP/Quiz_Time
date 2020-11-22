@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     
+</head>
+<body>
+    <div class="col-lg-8 border border-success p-4 m-4 mx-auto">
+        {% for i in paginatorque%}
+        <h1>Questions - {{i.question}} </h1>
+        <form>
+            <div class="radio">
+                <label><input type="radio" id="option1" name="name" value="{{i.option1}}"> {{i.option1}}</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" id="option2" name="name" value="{{i.option2}}"> {{i.option2}}</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" id="option3" name="name" value="{{i.option3}}"> {{i.option3}}</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" id="option4" name="name" value="{{i.option4}}"> {{i.option4}}</label>
+            </div>
+        </form>
+        {%endfor%}
+        <div class="form-group">
+            <button class="btn btn-success" id="save_ans">Submit Answer</button>
+        </div>
+        <div class="paginator">
+            <div class="from-group">
+                {% if paginatorque.has_next %}
+                    <a href="?page={{paginatorque.next_page_number}}"><button class="btn from-control btn-primary" id="submitAnswer">Next</button></a>
+                    
+                {% else %}
+                    <a href="/result/"><button class="btn form-control btn-success" id="submitAnswer">Submit Quiz</button></a>
+                {% endif %}
+                </div>
+        </div>
+    </div>
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

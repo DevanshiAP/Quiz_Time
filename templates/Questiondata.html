@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz data</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><a href="/adminpage/"><h1>Add Question</h1></a></td>
+            <td><a href="/Quiz/"><h1>Start Quiz</h1></a></td>
+        </tr>
+    </table>
+    {% for i in data%}
+    <table border="1">
+        <tr>
+            <td colspan="4">Q) {{i.question}}</td>
+        </tr>
+        <tr>
+            <td>A) {{i.option1}}</td>
+            <td>B) {{i.option2}}</td>
+        </tr>
+        <tr>
+            <td>C) {{i.option3}}</td>
+            <td>D) {{i.option4}}</td>
+        </tr>
+        <tr>
+            <td>Ans) {{i.answer}}</td>
+            <td>date) {{i.date}}</td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'Questiondelete' i.id %}">Delete </a> </td>
+            <td><a href="{% url 'Questionupdate' i.id%}">Update</a></td>
+        </tr>
+    </br>    
+    </br>
+    {%endfor%}
+    </table>
+</body>
+</html>
