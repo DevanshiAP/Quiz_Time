@@ -28,8 +28,6 @@ def Quiz(request):
 def result(request):
     score = 0
     for i in range(len(lst)):
-        print(lst[i])
-        print(anslist[i])
         if lst[i] == anslist[i]:
             score+=1
     return render(request,"result.html",{'score':score})
@@ -43,7 +41,7 @@ def adminpage(request):
         que = Questionsfrom(request.POST)
         if que.is_valid():
             que.save()
-            return redirect('welcome')
+            return redirect('Questiondata')
     else:
         que = Questionsfrom()
         return render(request,"admin.html",{'adminquestion':que})
